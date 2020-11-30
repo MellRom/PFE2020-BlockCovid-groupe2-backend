@@ -15,7 +15,7 @@ public class PfeApplication {
     }
     public static void main(String[] args) {
         SpringApplication.run(PfeApplication.class, args);
-        System.out.println("jsuitrofor");
+        System.out.println("QuentinLeBg");
     }
 
 }
