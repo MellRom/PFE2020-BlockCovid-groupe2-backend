@@ -1,4 +1,4 @@
-package be.ipl.pfe.bizz.controllers;
+package be.ipl.pfe.bizz.dto;
 
 
 import lombok.Getter;
