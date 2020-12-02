@@ -1,0 +1,15 @@
+package be.ipl.pfe.dal.repositories;
+
+import be.ipl.pfe.dal.models.WebUser;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface WebUserRepository extends CrudRepository<WebUser, Integer> {
+
+    @Query("select new be.ipl.pfe.dal.models.WebUser(u.login, u.password) " +
+            "FROM WebUser as u " +
+            "where u.login = ?1 and u.password = ?2")
+    WebUser checkConnexion(String login, String password);
+}

@@ -13,5 +13,4 @@ public class DoctorController {
 
     @Autowired
     private IDoctorService doctorService;
-
 }

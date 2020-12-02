@@ -15,10 +15,9 @@ public class Doctor implements Serializable {
     @Getter
     @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+    private int user_id;
 
-    public Doctor(int id) {
-        this.id = id;
+    public Doctor(int user_id) {
+        this.user_id = user_id;
     }
 }

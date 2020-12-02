@@ -8,7 +8,7 @@ import org.springframework.lang.Nullable;
 import javax.persistence.Id;
 
 @NoArgsConstructor
-public class UserDto {
+public class WebUserDto {
 
     @Setter
     @Getter
@@ -40,7 +40,7 @@ public class UserDto {
     @Nullable
     private String name;
 
-    public UserDto(int id, String login, String password, String role, String name) {
+    public WebUserDto(int id, String login, String password, String role, String name) {
         this.id = id;
         this.login = login;
         this.password = password;

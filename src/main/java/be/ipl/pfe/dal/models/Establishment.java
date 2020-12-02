@@ -15,8 +15,7 @@ public class Establishment implements Serializable {
     @Getter
     @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+    private int user_id;
 
     @Getter
     @Setter
@@ -24,8 +23,8 @@ public class Establishment implements Serializable {
     private String address;
 
 
-    public Establishment(int id, String address) {
-        this.id = id;
+    public Establishment(int user_id, String address) {
+        this.user_id = user_id;
         this.address = address;
     }
 }
