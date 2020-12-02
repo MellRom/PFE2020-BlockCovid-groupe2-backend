@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class DoctorService implements IDoctorService {
 
     @Autowired
-    private DoctorRepository repository;
+    private DoctorRepository doctorRepository;
     @Autowired
     private ModelMapper modelMapper;
 

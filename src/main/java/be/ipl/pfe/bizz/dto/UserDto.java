@@ -19,16 +19,32 @@ public class UserDto {
     @Setter
     @Getter
     @Nullable
-    private int login;
+    private String login;
 
     @Getter
     @Setter
     @Nullable
     private String password;
 
-    public UserDto(int id, int login, String password) {
+    @Getter
+    @Setter
+    private String role;
+
+    @Getter
+    @Setter
+    @Nullable
+    private String adress;
+
+    @Getter
+    @Setter
+    @Nullable
+    private String name;
+
+    public UserDto(int id, String login, String password, String role, String name) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.role = role;
+        this.name = name;
     }
 }
