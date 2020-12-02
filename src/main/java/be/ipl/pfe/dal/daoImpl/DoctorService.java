@@ -1,16 +1,16 @@
 package be.ipl.pfe.dal.daoImpl;
 
-import be.ipl.pfe.dal.dao.IEstablishmentService;
-import be.ipl.pfe.dal.repositories.EstablishmentRepository;
+import be.ipl.pfe.dal.dao.IDoctorService;
+import be.ipl.pfe.dal.repositories.DoctorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EstablishmentService implements IEstablishmentService {
+public class DoctorService implements IDoctorService {
 
     @Autowired
-    private EstablishmentRepository repository;
+    private DoctorRepository repository;
     @Autowired
     private ModelMapper modelMapper;
 
