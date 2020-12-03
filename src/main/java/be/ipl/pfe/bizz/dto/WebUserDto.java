@@ -6,11 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class WebUserDto implements Serializable {
+public class WebUserDto{
 
     @Setter
     @Getter

@@ -1,29 +1,27 @@
-package be.ipl.pfe.bizz.dto;
-
+package be.ipl.pfe.dal.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
 
-import javax.persistence.Id;
-import java.io.Serializable;
-import java.sql.Date;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class CitizenDto implements Serializable {
-
-    @Setter
+@Table(name = "citizen",schema = "projetpfe")
+public class Citizen {
     @Getter
+    @Setter
     @Id
-    @Nullable
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int citizen_id;
 
     @Getter
     @Setter
-    @Nullable
+    @Column(name = "sick_since")
     private Timestamp sick_since;
+
 }

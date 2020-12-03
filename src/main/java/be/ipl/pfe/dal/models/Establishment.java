@@ -1,5 +1,6 @@
 package be.ipl.pfe.dal.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "establishment",schema = "projetpfe")
 public class Establishment implements Serializable {
 
@@ -21,10 +23,4 @@ public class Establishment implements Serializable {
     @Setter
     @Column(name = "address")
     private String address;
-
-
-    public Establishment(int user_id, String address) {
-        this.user_id = user_id;
-        this.address = address;
-    }
 }
