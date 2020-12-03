@@ -25,7 +25,7 @@ public class EstablishmentController {
         return ResponseEntity.ok(establishmentService.deletePlace(placeDto));
     }
 
-    @PostMapping("list_placeeux")
+    @PostMapping("list_places")
     public ResponseEntity getPlacesForEstablishment(@RequestBody PlaceDto placeDto){
         return ResponseEntity.ok(establishmentService.getPlacesForEstablishment(placeDto));
     }
