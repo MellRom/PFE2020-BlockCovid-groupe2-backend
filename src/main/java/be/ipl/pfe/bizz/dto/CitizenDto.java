@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @NoArgsConstructor
+@AllArgsConstructor
 public class CitizenDto implements Serializable {
 
     @Setter
@@ -28,9 +30,4 @@ public class CitizenDto implements Serializable {
     @Nullable
     private String password;
 
-    public CitizenDto(int id, int login, String password) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-    }
 }

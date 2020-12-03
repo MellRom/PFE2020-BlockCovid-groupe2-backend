@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @NoArgsConstructor
+@AllArgsConstructor
 public class DoctorDto implements Serializable {
 
     @Setter
@@ -17,10 +19,4 @@ public class DoctorDto implements Serializable {
     @Id
     @Nullable
     private int id;
-
-
-
-    public DoctorDto(int id) {
-        this.id = id;
-    }
 }

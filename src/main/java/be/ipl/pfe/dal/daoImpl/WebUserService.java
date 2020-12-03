@@ -44,7 +44,6 @@ public class WebUserService implements IWebUserService {
             Establishment establishment = new Establishment(webUser.getUser_id(), webUserDto.getAdress());
             establishmentRepository.save(establishment);
         }
-
         return webUserDto;
     }
 }
