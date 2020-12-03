@@ -15,11 +15,19 @@ public class WebUserController {
 
     @PostMapping("connexion")
     public ResponseEntity connexion(@RequestBody WebUserDto webUserDto) {
-        return ResponseEntity.ok(userService.checkConnection(webUserDto));
+        WebUserDto toSend = userService.checkConnection(webUserDto);
+        if(toSend== null){
+            return ResponseEntity.badRequest().body("Login ou mot de passe incorrect");
+        }
+        return ResponseEntity.ok(toSend);
     }
 
     @PostMapping("inscription")
     public ResponseEntity inscription(@RequestBody WebUserDto webUserDto){
-         return ResponseEntity.ok(userService.insertUser(webUserDto));
+        WebUserDto toSend = userService.insertUser(webUserDto);
+        if(toSend == null){
+            return ResponseEntity.badRequest().body("Login déjà existant");
+        }
+         return ResponseEntity.ok(toSend);
     }
 }

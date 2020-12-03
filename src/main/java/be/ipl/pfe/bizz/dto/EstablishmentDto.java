@@ -23,11 +23,6 @@ public class EstablishmentDto implements Serializable {
     @Setter
     @Getter
     @Nullable
-    private String name;
-
-    @Setter
-    @Getter
-    @Nullable
     private String address;
 
 }

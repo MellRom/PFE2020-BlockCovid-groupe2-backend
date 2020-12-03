@@ -28,12 +28,18 @@ public class WebUserService implements IWebUserService {
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
         webUser = webUserRepository.checkConnexion(webUser.getLogin(), webUser.getPassword());
+        if(webUser == null){
+            return null;
+        }
         webUserDto = modelMapper.map(webUser, WebUserDto.class);
         return webUserDto;
     }
 
     public WebUserDto insertUser(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
+        if(webUserRepository.checkLogin(webUser.getLogin()) != null){
+            return null;
+        }
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
         webUserDto.setUser_id(webUser.getUser_id());
