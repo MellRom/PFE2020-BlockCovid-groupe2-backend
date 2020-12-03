@@ -35,9 +35,7 @@ public class WebUserService implements IWebUserService {
     public WebUserDto insertUser(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
         webUser = webUserRepository.save(webUser);
-        System.out.println(webUser.getPassword());
         webUserDto.setPassword("");
-        System.out.println(webUserDto.getRole());
         webUserDto.setId(webUser.getUser_id());
         if(webUserDto.getRole().equals("docteur")){
             Doctor doctor = new Doctor(webUser.getUser_id());

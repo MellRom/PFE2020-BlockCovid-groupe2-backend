@@ -35,9 +35,15 @@ public class WebUser implements Serializable {
     @Column(name = "name")
     private String name;
 
-    public WebUser(int user_id, String login /* String role*/){
+    @Getter
+    @Setter
+    @Column(name = "role")
+    private String role;
+
+
+    public WebUser(int user_id, String login, String role){
         this.user_id = user_id;
         this.login = login;
-        //this.role = role;
+        this.role = role;
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WebUserRepository extends CrudRepository<WebUser, Integer> {
 
-    @Query("select new be.ipl.pfe.dal.models.WebUser(u.user_id,u.login) " +
+    @Query("select new be.ipl.pfe.dal.models.WebUser(u.user_id,u.login, u.role) " +
             "FROM WebUser as u " +
             "where u.login = ?1 and u.password = ?2")
     WebUser checkConnexion(String login, String password);
