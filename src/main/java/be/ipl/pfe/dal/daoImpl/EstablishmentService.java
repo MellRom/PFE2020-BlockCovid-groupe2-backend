@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,6 +40,10 @@ public class EstablishmentService implements IEstablishmentService {
     @Override
     public List<PlaceDto> getPlacesForEstablishment(PlaceDto placeDto) {
         List<Place> places = placeRepository.getPlacesForEstablishment(placeDto.getId_establishment());
-        return null;
+        List<PlaceDto> placeDtos = new ArrayList<>();
+        for (Place p : places) {
+            placeDtos.add(modelMapper.map(p, PlaceDto.class));
+        }
+        return placeDtos;
     }
 }

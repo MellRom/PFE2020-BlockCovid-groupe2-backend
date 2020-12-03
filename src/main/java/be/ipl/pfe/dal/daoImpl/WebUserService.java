@@ -36,14 +36,15 @@ public class WebUserService implements IWebUserService {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
-        webUserDto.setId(webUser.getUser_id());
-        if(webUserDto.getRole().equals("docteur")){
+        webUserDto.setUser_id(webUser.getUser_id());
+        if(webUserDto.getRole().equals("doctor")){
             Doctor doctor = new Doctor(webUser.getUser_id());
             doctorRepository.save(doctor);
-        }else if((webUserDto.getRole().equals("etablissement"))){
+        }else if((webUserDto.getRole().equals("establishment"))){
             Establishment establishment = new Establishment(webUser.getUser_id(), webUserDto.getAdress());
             establishmentRepository.save(establishment);
         }
+
         return webUserDto;
     }
 }

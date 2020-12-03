@@ -16,7 +16,7 @@ public class WebUserDto implements Serializable {
     @Getter
     @Id
     @Nullable
-    private int id;
+    private int user_id;
 
     @Setter
     @Getter
