@@ -40,6 +40,9 @@ public class EstablishmentService implements IEstablishmentService {
     @Override
     public List<PlaceDto> getPlacesForEstablishment(PlaceDto placeDto) {
         List<Place> places = placeRepository.getPlacesForEstablishment(placeDto.getId_establishment());
+        if(places.size() == 0){
+            return null;
+        }
         List<PlaceDto> placeDtos = new ArrayList<>();
         for (Place p : places) {
             placeDtos.add(modelMapper.map(p, PlaceDto.class));

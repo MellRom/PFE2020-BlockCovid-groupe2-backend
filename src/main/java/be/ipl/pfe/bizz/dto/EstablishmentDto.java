@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @NoArgsConstructor
+@AllArgsConstructor
 public class EstablishmentDto implements Serializable {
 
     @Setter
@@ -28,10 +30,4 @@ public class EstablishmentDto implements Serializable {
     @Nullable
     private String address;
 
-
-    public EstablishmentDto(int id, @Nullable String name, @Nullable String address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-    }
 }
