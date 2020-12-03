@@ -1,14 +1,16 @@
 package be.ipl.pfe.bizz.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
-
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @NoArgsConstructor
-public class WebUserDto {
+@AllArgsConstructor
+public class WebUserDto implements Serializable {
 
     @Setter
     @Getter
@@ -40,11 +42,4 @@ public class WebUserDto {
     @Nullable
     private String name;
 
-    public WebUserDto(int id, String login, String password, String role, String name) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.role = role;
-        this.name = name;
-    }
 }
