@@ -15,17 +15,17 @@ public class EstablishmentController {
     @Autowired
     private IEstablishmentService establishmentService;
 
-    @PostMapping("ajout_lieu")
+    @PostMapping("insert_place")
     public ResponseEntity insertPlace(@RequestBody PlaceDto placeDto){
         return ResponseEntity.ok(establishmentService.insertPlace(placeDto));
     }
 
-    @PostMapping("delete_lieu")
+    @PostMapping("delete_place")
     public ResponseEntity deletePlace(@RequestBody PlaceDto placeDto){
         return ResponseEntity.ok(establishmentService.deletePlace(placeDto));
     }
 
-    @PostMapping("liste_lieux")
+    @PostMapping("list_placeeux")
     public ResponseEntity getPlacesForEstablishment(@RequestBody PlaceDto placeDto){
         return ResponseEntity.ok(establishmentService.getPlacesForEstablishment(placeDto));
     }

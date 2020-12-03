@@ -8,4 +8,6 @@ public interface ICitizenService {
     CitizenDto inscription();
 
     VisitDto visit(VisitDto visitDto);
+
+    CitizenDto positiveCovid(CitizenDto citizenDto);
 }

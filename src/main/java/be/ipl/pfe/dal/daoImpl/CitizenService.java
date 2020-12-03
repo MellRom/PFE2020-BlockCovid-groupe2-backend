@@ -41,4 +41,14 @@ public class CitizenService implements ICitizenService {
         visitDto = modelMapper.map(visit, VisitDto.class);
         return visitDto;
     }
+
+    @Override
+    public CitizenDto positiveCovid(CitizenDto citizenDto) {
+        Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
+        citizen.setSick_since(Timestamp.valueOf(LocalDateTime.now()));
+        System.out.println("coucou");
+        citizen = citizenRepository.save(citizen);
+        citizenDto = modelMapper.map(citizen, CitizenDto.class);
+        return citizenDto;
+    }
 }

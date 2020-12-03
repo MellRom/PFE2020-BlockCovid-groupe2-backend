@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.controllers;
 
 
+import be.ipl.pfe.bizz.dto.CitizenDto;
 import be.ipl.pfe.bizz.dto.VisitDto;
 import be.ipl.pfe.dal.dao.ICitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class CitizenController {
     @PostMapping("visit")
     public ResponseEntity visit(@RequestBody VisitDto visitDto) {
         return ResponseEntity.ok(citizenService.visit(visitDto));
+    }
+
+    @PostMapping("positive_covid")
+    public ResponseEntity positiveCovid(@RequestBody CitizenDto citizenDto){
+        return ResponseEntity.ok(citizenService.positiveCovid(citizenDto));
     }
 }
 
