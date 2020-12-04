@@ -9,35 +9,24 @@ import javax.persistence.Id;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class WebUserDto{
 
-    @Setter
-    @Getter
     @Id
-    @Nullable
     private int user_id;
 
-    @Setter
-    @Getter
     @Nullable
     private String login;
 
-    @Getter
-    @Setter
     @Nullable
     private String password;
 
-    @Getter
-    @Setter
     private String role;
 
-    @Getter
-    @Setter
     @Nullable
     private String adress;
 
-    @Getter
-    @Setter
     @Nullable
     private String name;
 

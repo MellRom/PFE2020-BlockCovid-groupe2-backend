@@ -11,16 +11,15 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "establishment",schema = "projetpfe")
 public class Establishment implements Serializable {
 
-    @Getter
-    @Setter
+
     @Id
     private int user_id;
 
-    @Getter
-    @Setter
     @Column(name = "address")
     private String address;
 }

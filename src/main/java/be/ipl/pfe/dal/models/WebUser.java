@@ -11,32 +11,24 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "web_user",schema = "projetpfe")
 public class WebUser implements Serializable {
 
-    @Getter
-    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int user_id;
 
-    @Getter
-    @Setter
     @Column(name = "login")
     private String login;
 
-    @Getter
-    @Setter
     @Column(name = "password")
     private String password;
 
-    @Getter
-    @Setter
     @Column(name = "name")
     private String name;
 
-    @Getter
-    @Setter
     @Column(name = "role")
     private String role;
 

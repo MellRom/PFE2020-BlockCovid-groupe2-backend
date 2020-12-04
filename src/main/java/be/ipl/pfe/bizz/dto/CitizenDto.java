@@ -14,16 +14,13 @@ import java.sql.Timestamp;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class CitizenDto implements Serializable {
 
-    @Setter
-    @Getter
     @Id
-    @Nullable
     private int citizen_id;
 
-    @Getter
-    @Setter
     @Nullable
     private Timestamp sick_since;
 }

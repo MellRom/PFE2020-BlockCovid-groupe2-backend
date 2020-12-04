@@ -12,11 +12,11 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class DoctorDto implements Serializable {
 
-    @Setter
-    @Getter
+
     @Id
-    @Nullable
     private int id;
 }

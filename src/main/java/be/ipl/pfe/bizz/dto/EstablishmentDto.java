@@ -12,16 +12,14 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class EstablishmentDto implements Serializable {
 
-    @Setter
-    @Getter
+
     @Id
-    @Nullable
     private int id;
 
-    @Setter
-    @Getter
     @Nullable
     private String address;
 

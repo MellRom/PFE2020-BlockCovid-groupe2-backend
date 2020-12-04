@@ -9,18 +9,18 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "citizen",schema = "projetpfe")
 public class Citizen {
-    @Getter
-    @Setter
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int citizen_id;
 
-    @Getter
-    @Setter
+
     @Column(name = "sick_since")
     private Timestamp sick_since;
 

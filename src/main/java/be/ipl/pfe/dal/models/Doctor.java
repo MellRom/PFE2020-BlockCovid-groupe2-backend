@@ -1,5 +1,6 @@
 package be.ipl.pfe.dal.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,15 +10,13 @@ import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "doctor",schema = "projetpfe")
 public class Doctor implements Serializable {
 
-    @Getter
-    @Setter
+
     @Id
     private int user_id;
-
-    public Doctor(int user_id) {
-        this.user_id = user_id;
-    }
 }

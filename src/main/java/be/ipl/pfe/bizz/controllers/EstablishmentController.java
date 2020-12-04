@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = {"http://localhost:4200", "https://blockcovid-pfeipl2020-groupe2.herokuapp.com"})
 @RestController
 @RequestMapping("/establishment/")
@@ -27,6 +29,10 @@ public class EstablishmentController {
 
     @PostMapping("list_places")
     public ResponseEntity getPlacesForEstablishment(@RequestBody PlaceDto placeDto){
-        return ResponseEntity.ok(establishmentService.getPlacesForEstablishment(placeDto));
+        List<PlaceDto> places = establishmentService.getPlacesForEstablishment(placeDto);
+        if(places.size() == 0){
+            return ResponseEntity.badRequest().body("Aucun lieu défini");
+        }
+        return ResponseEntity.ok(places);
     }
 }
