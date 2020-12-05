@@ -43,10 +43,10 @@ public class WebUserService implements IWebUserService {
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
         webUserDto.setUser_id(webUser.getUser_id());
-        if(webUserDto.getRole().equals("doctor")){
+        if(webUserDto.getRole().equals(WebUser.Role.doctor)){
             Doctor doctor = new Doctor(webUser.getUser_id());
             doctorRepository.save(doctor);
-        }else if((webUserDto.getRole().equals("establishment"))){
+        }else if((webUserDto.getRole().equals(WebUser.Role.establishment))){
             Establishment establishment = new Establishment(webUser.getUser_id(), webUserDto.getAdress());
             establishmentRepository.save(establishment);
         }

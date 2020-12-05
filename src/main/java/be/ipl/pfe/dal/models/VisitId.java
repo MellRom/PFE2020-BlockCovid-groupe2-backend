@@ -11,8 +11,8 @@ import java.util.Objects;
 @AllArgsConstructor
 public class VisitId implements Serializable {
 
-    private Place place;
-    private Citizen citizen;
+    private int place_id;
+    private int citizen_id;
     private Timestamp entrance_date;
 
     @Override
@@ -20,13 +20,13 @@ public class VisitId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VisitId visitId = (VisitId) o;
-        return Objects.equals(place, visitId.place) &&
-                Objects.equals(citizen, visitId.citizen) &&
+        return Objects.equals(place_id, visitId.place_id) &&
+                Objects.equals(citizen_id, visitId.citizen_id) &&
                 Objects.equals(entrance_date, visitId.entrance_date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(place, citizen, entrance_date);
+        return Objects.hash(place_id, citizen_id, entrance_date);
     }
 }
