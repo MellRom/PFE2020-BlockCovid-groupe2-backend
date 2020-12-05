@@ -1,5 +1,6 @@
 package be.ipl.pfe.bizz.dto;
 
+import be.ipl.pfe.dal.models.WebUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,13 +17,12 @@ public class WebUserDto{
     @Id
     private int user_id;
 
-    @Nullable
     private String login;
 
     @Nullable
     private String password;
 
-    private String role;
+    private WebUser.Role role;
 
     @Nullable
     private String adress;

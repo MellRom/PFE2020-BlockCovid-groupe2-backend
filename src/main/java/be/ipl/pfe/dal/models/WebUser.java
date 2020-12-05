@@ -29,13 +29,18 @@ public class WebUser implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private String role;
+    private Role role;
 
-
-    public WebUser(int user_id, String login, String role){
+    public WebUser(int user_id, String login, Role role){
         this.user_id = user_id;
         this.login = login;
         this.role = role;
+    }
+
+    public enum Role {
+        doctor,
+        establishment
     }
 }
