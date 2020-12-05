@@ -1,16 +1,15 @@
 package be.ipl.pfe.dal.models;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -32,4 +31,7 @@ public class Place implements Serializable {
         @ManyToOne(fetch = FetchType.LAZY)
         @Fetch(FetchMode.JOIN)
         private Establishment establishment;
+
+        @OneToMany(targetEntity = Visit.class, mappedBy = "place", fetch = FetchType.LAZY)
+        private Set<Visit> visits;
 }

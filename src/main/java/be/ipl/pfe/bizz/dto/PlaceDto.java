@@ -1,6 +1,9 @@
 package be.ipl.pfe.bizz.dto;
 
 import be.ipl.pfe.dal.models.Establishment;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +11,7 @@ import lombok.Setter;
 import org.springframework.lang.Nullable;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +29,11 @@ public class PlaceDto implements Serializable {
         @Nullable
         private String description;
 
-        private Establishment id_establishment;
+        @JsonBackReference
+        private EstablishmentDto establishment;
+
+        @JsonIgnore
+        private Set<VisitDto> visitsDto;
+
 }
 

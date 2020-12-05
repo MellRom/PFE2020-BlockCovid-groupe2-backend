@@ -1,12 +1,10 @@
 package be.ipl.pfe.dal.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -26,6 +24,7 @@ public class Establishment implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(targetEntity = Place.class, mappedBy = "establishment", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Place.class,mappedBy = "establishment", fetch = FetchType.LAZY)
     private Set<Place> places;
+
 }

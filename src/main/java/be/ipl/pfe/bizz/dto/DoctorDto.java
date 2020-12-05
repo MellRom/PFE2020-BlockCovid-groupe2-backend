@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import be.ipl.pfe.dal.models.WebUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,5 @@ public class DoctorDto implements Serializable {
 
 
     @Id
-    private int id;
+    private WebUserDto user_id;
 }

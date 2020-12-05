@@ -33,6 +33,9 @@ public class WebUser implements Serializable {
     @Column(name = "role")
     private Role role;
 
+    /*@OneToOne(targetEntity = Doctor.class, mappedBy = "doctor_id", fetch = FetchType.LAZY)
+    private Doctor doctor_id;*/
+
     public WebUser(int user_id, String login, Role role){
         this.user_id = user_id;
         this.login = login;

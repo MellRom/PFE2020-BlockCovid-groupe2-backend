@@ -19,8 +19,9 @@ import java.sql.Timestamp;
 public class Visit implements Serializable{
 
         @Id
-        @Column(name = "place_id")
-        private int place_id;
+        @JoinColumn(name = "place_id")
+        @ManyToOne(fetch = FetchType.LAZY)
+        private Place place;
 
         @Id
         @JoinColumn(name = "citizen_id")

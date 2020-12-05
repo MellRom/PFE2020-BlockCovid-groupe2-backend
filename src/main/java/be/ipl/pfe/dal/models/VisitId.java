@@ -5,13 +5,12 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 public class VisitId implements Serializable {
 
-    private int place_id;
+    private Place place;
     private Citizen citizen;
     private Timestamp entrance_date;
 

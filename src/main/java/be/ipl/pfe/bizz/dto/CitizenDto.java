@@ -1,7 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
-import be.ipl.pfe.dal.models.Visit;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,6 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -26,5 +25,6 @@ public class CitizenDto implements Serializable {
     @Nullable
     private Timestamp sick_since;
 
-    private Set<VisitDto> visits;
+    @JsonIgnore
+    private Set<VisitDto> visitsDto;
 }

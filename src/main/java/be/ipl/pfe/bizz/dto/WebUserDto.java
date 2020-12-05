@@ -30,4 +30,6 @@ public class WebUserDto{
     @Nullable
     private String name;
 
+    private DoctorDto doctor;
+
 }
