@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,4 +26,6 @@ public class Citizen implements Serializable {
     @Column(name = "sick_since")
     private Timestamp sick_since;
 
+    @OneToMany(targetEntity = Visit.class, mappedBy = "citizen", fetch = FetchType.LAZY)
+    private Set<Visit> visits;
 }

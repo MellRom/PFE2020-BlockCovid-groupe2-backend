@@ -1,8 +1,10 @@
 package be.ipl.pfe.bizz.controllers;
 
+import be.ipl.pfe.bizz.dto.EstablishmentDto;
 import be.ipl.pfe.bizz.dto.PlaceDto;
 import be.ipl.pfe.bizz.dto.WebUserDto;
 import be.ipl.pfe.dal.dao.IEstablishmentService;
+import be.ipl.pfe.dal.models.Establishment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,11 +30,7 @@ public class EstablishmentController {
     }
 
     @PostMapping("list_places")
-    public ResponseEntity getPlacesForEstablishment(@RequestBody PlaceDto placeDto){
-        List<PlaceDto> places = establishmentService.getPlacesForEstablishment(placeDto);
-        if(places.size() == 0){
-            return ResponseEntity.badRequest().body("Aucun lieu défini");
-        }
-        return ResponseEntity.ok(places);
+    public ResponseEntity getPlacesForEstablishment(@RequestBody EstablishmentDto establishmentDto){
+        return ResponseEntity.ok(establishmentService.getPlacesForEstablishment(establishmentDto).getPlaces());
     }
 }

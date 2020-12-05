@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import be.ipl.pfe.dal.models.Place;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,9 +20,11 @@ public class EstablishmentDto implements Serializable {
 
 
     @Id
-    private int id;
+    private int user_id;
 
     @Nullable
     private String address;
+
+    private Set<PlaceDto> places;
 
 }

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,7 +28,8 @@ public class Place implements Serializable {
         @Column(name = "description")
         private String description;
 
-        @Column(name= "id_establishment")
-        private int id_establishment;
-
+        @JoinColumn(name= "id_establishment")
+        @ManyToOne(fetch = FetchType.LAZY)
+        @Fetch(FetchMode.JOIN)
+        private Establishment establishment;
 }

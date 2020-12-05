@@ -23,8 +23,9 @@ public class Visit implements Serializable{
         private int place_id;
 
         @Id
-        @Column(name = "citizen_id")
-        private int citizen_id;
+        @JoinColumn(name = "citizen_id")
+        @ManyToOne(fetch = FetchType.LAZY)
+        private Citizen citizen;
 
         @Id
         @Column(name = "entrance_date")

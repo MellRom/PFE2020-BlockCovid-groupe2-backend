@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+
 @Service
 public class WebUserService implements IWebUserService {
 
@@ -47,7 +49,7 @@ public class WebUserService implements IWebUserService {
             Doctor doctor = new Doctor(webUser.getUser_id());
             doctorRepository.save(doctor);
         }else if((webUserDto.getRole().equals(WebUser.Role.establishment))){
-            Establishment establishment = new Establishment(webUser.getUser_id(), webUserDto.getAdress());
+            Establishment establishment = new Establishment(webUser.getUser_id(), webUserDto.getAdress(), new HashSet<>());
             establishmentRepository.save(establishment);
         }
         return webUserDto;

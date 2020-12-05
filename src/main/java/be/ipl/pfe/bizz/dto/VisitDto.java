@@ -17,9 +17,11 @@ public class VisitDto implements Serializable{
         private int place_id;
 
         @Id
-        private int citizen_id;
+        private CitizenDto citizen;
 
         @Id
         private Timestamp entrance_date;
+
+
 
 }

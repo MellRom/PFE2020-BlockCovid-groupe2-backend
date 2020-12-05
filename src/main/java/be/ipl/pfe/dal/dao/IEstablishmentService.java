@@ -1,6 +1,8 @@
 package be.ipl.pfe.dal.dao;
 
+import be.ipl.pfe.bizz.dto.EstablishmentDto;
 import be.ipl.pfe.bizz.dto.PlaceDto;
+import be.ipl.pfe.dal.models.Establishment;
 
 import java.util.List;
 
@@ -10,5 +12,5 @@ public interface IEstablishmentService {
 
     PlaceDto deletePlace(PlaceDto placeDto);
 
-    List<PlaceDto> getPlacesForEstablishment(PlaceDto placeDto);
+    EstablishmentDto getPlacesForEstablishment(EstablishmentDto establishmentDto);
 }

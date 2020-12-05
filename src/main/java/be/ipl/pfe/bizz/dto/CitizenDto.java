@@ -1,6 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import be.ipl.pfe.dal.models.Visit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +25,6 @@ public class CitizenDto implements Serializable {
 
     @Nullable
     private Timestamp sick_since;
+
+    private Set<VisitDto> visits;
 }

@@ -1,5 +1,6 @@
 package be.ipl.pfe.bizz.dto;
 
+import be.ipl.pfe.dal.models.Establishment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,6 @@ public class PlaceDto implements Serializable {
         @Nullable
         private String description;
 
-        private int id_establishment;
+        private Establishment id_establishment;
 }
 
