@@ -10,7 +10,6 @@ import org.springframework.lang.Nullable;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
