@@ -29,7 +29,8 @@ public class CitizenController {
 
     @PostMapping("positive_covid")
     public ResponseEntity positiveCovid(@RequestBody CitizenDto citizenDto){
-        return ResponseEntity.ok(citizenService.positiveCovid(citizenDto));
+        citizenService.positiveCovid(citizenDto);
+        return ResponseEntity.ok().body("Maladie enregistrée");
     }
 }
 
