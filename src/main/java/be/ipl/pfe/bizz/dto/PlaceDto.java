@@ -30,6 +30,7 @@ public class PlaceDto implements Serializable {
         @JsonBackReference
         private WebUserDto webUser;
 
+        @Nullable
         @JsonIgnore
         private Set<VisitDto> visitsDto;
 

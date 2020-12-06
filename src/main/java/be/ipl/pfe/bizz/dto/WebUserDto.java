@@ -20,11 +20,13 @@ public class WebUserDto implements Serializable {
     @Id
     private int user_id;
 
+    @Nullable
     private String login;
 
     @Nullable
     private String password;
 
+    @Nullable
     private WebUser.Role role;
 
     @Nullable
@@ -32,9 +34,11 @@ public class WebUserDto implements Serializable {
 
     @Nullable
     private String name;
+
     @Nullable
     private String address;
 
+    @Nullable
     @JsonManagedReference
     private Set<PlaceDto> places;
 }

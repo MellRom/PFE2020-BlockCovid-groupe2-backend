@@ -25,6 +25,7 @@ public class CitizenDto implements Serializable {
     @Nullable
     private Timestamp sick_since;
 
+    @Nullable
     @JsonIgnore
     private Set<VisitDto> visitsDto;
 }
