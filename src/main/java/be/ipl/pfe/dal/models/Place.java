@@ -30,7 +30,7 @@ public class Place implements Serializable {
         @JoinColumn(name= "id_establishment")
         @ManyToOne(fetch = FetchType.LAZY)
         @Fetch(FetchMode.JOIN)
-        private Establishment establishment;
+        private WebUser webUser;
 
         @OneToMany(targetEntity = Visit.class, mappedBy = "place", fetch = FetchType.LAZY)
         private Set<Visit> visits;

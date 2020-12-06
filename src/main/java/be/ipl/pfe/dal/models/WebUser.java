@@ -9,6 +9,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -35,9 +36,11 @@ public class WebUser implements Serializable {
     @Column(name = "role")
     private Role role;
 
-    /*@OneToOne(fetch = FetchType.LAZY, mappedBy = "webUser")
-    @Fetch(FetchMode.JOIN)
-    private Establishment establishment;*/
+    @OneToMany(targetEntity = Place.class,mappedBy = "webUser", fetch = FetchType.LAZY)
+    private Set<Place> places;
+
+    @Column(name = "address")
+    private String address;
 
     public WebUser(int user_id, String login, Role role){
         this.user_id = user_id;

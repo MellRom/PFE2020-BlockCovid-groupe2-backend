@@ -1,5 +1,6 @@
 package be.ipl.pfe.bizz.controllers;
 
+import be.ipl.pfe.bizz.dto.PlaceDto;
 import be.ipl.pfe.bizz.dto.WebUserDto;
 import be.ipl.pfe.dal.dao.IWebUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,23 @@ public class WebUserController {
             return ResponseEntity.badRequest().body("Login déjà existant");
         }
          return ResponseEntity.ok(toSend);
+    }
+
+
+    //Establishment
+
+    @PostMapping("establishment/insert_place")
+    public ResponseEntity insertPlace(@RequestBody PlaceDto placeDto){
+        return ResponseEntity.ok(userService.insertPlace(placeDto));
+    }
+
+    @PostMapping("establishment/delete_place")
+    public ResponseEntity deletePlace(@RequestBody PlaceDto placeDto){
+        return ResponseEntity.ok(userService.deletePlace(placeDto));
+    }
+
+    @PostMapping("establishment/list_places")
+    public ResponseEntity getPlacesForEstablishment(@RequestBody WebUserDto webUserDto){
+        return ResponseEntity.ok(userService.getPlacesForEstablishment(webUserDto).getPlaces());
     }
 }
