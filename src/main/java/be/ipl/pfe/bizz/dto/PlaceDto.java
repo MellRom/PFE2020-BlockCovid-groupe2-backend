@@ -1,9 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
-import be.ipl.pfe.dal.models.Establishment;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

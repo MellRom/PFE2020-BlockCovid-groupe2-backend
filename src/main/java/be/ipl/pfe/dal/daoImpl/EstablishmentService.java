@@ -42,7 +42,7 @@ public class EstablishmentService implements IEstablishmentService {
 
     @Override
     public EstablishmentDto getPlacesForEstablishment(EstablishmentDto establishmentDto) {
-        Optional<Establishment> establishment = establishmentRepository.findById(establishmentDto.getUser_id());
+        Optional<Establishment> establishment = establishmentRepository.findById(establishmentDto.getEstablishment_id());
         establishmentDto = modelMapper.map(establishment.get(), EstablishmentDto.class);
         return establishmentDto;
     }

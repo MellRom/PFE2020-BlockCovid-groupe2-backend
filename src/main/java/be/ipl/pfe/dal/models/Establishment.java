@@ -1,6 +1,5 @@
 package be.ipl.pfe.dal.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

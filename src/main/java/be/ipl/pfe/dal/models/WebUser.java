@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,8 +35,9 @@ public class WebUser implements Serializable {
     @Column(name = "role")
     private Role role;
 
-    /*@OneToOne(targetEntity = Doctor.class, mappedBy = "doctor_id", fetch = FetchType.LAZY)
-    private Doctor doctor_id;*/
+    /*@OneToOne(fetch = FetchType.LAZY, mappedBy = "webUser")
+    @Fetch(FetchMode.JOIN)
+    private Establishment establishment;*/
 
     public WebUser(int user_id, String login, Role role){
         this.user_id = user_id;

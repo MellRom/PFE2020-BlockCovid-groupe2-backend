@@ -7,12 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class WebUserDto{
+public class WebUserDto implements Serializable {
 
     @Id
     private int user_id;
@@ -30,6 +31,8 @@ public class WebUserDto{
     @Nullable
     private String name;
 
-    private DoctorDto doctor;
+    private DoctorDto doctorDto;
+
+    private EstablishmentDto establishmentDto;
 
 }

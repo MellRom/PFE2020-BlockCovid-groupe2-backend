@@ -1,13 +1,13 @@
 package be.ipl.pfe.bizz.dto;
 
 
+import be.ipl.pfe.dal.models.WebUser;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
-
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class EstablishmentDto implements Serializable {
 
 
     @Id
-    private int user_id;
+    private int establishment_id;
 
     @Nullable
     private String address;
