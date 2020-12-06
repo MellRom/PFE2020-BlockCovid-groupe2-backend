@@ -1,5 +1,7 @@
 package be.ipl.pfe.bizz.dto;
 
+import be.ipl.pfe.dal.models.Citizen;
+import be.ipl.pfe.dal.models.Place;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +16,13 @@ import java.sql.Timestamp;
 public class VisitDto implements Serializable{
 
         @Id
-        private int place_id;
+        private Place place_id;
 
         @Id
-        private int citizen;
+        private Citizen citizen;
 
         @Id
-        private Timestamp entrance_date;
+        private String entrance_date;
 
 
 
