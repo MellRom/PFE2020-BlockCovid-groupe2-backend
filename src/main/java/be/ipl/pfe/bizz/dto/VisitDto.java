@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class VisitDto implements Serializable{
 
         @Id
-        private Place place_id;
+        private Place place;
 
         @Id
         private Citizen citizen;
