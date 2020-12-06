@@ -20,7 +20,7 @@ public class EstablishmentDto implements Serializable {
 
 
     @Id
-    private int establishment_id;
+    private int user_id;
 
     @Nullable
     private String address;

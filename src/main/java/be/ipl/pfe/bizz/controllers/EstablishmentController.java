@@ -27,6 +27,6 @@ public class EstablishmentController {
 
     @PostMapping("list_places")
     public ResponseEntity getPlacesForEstablishment(@RequestBody EstablishmentDto establishmentDto){
-        return ResponseEntity.ok(establishmentService.getPlacesForEstablishment(establishmentDto));
+        return ResponseEntity.ok(establishmentService.getPlacesForEstablishment(establishmentDto).getPlaces());
     }
 }

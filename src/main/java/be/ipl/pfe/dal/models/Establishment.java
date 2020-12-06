@@ -18,7 +18,7 @@ public class Establishment implements Serializable {
 
 
     @Id
-    private int establishment_id;
+    private int user_id;
 
     @Column(name = "address")
     private String address;
