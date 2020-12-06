@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.core.annotation.Order;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,7 +37,8 @@ public class WebUser implements Serializable {
     private Role role;
 
     @OneToMany(targetEntity = Place.class,mappedBy = "webUser", fetch = FetchType.LAZY)
-    private Set<Place> places;
+    @OrderBy("place_id")
+    private List<Place> places;
 
     @Column(name = "address")
     private String address;
