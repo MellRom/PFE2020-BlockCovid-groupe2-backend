@@ -39,6 +39,5 @@ public class WebUserDto implements Serializable {
     private String address;
 
     @Nullable
-    @JsonManagedReference
     private Set<PlaceDto> places;
 }

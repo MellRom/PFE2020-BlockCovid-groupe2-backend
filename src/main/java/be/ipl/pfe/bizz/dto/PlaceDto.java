@@ -1,7 +1,6 @@
 package be.ipl.pfe.bizz.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +30,6 @@ public class PlaceDto implements Serializable {
         private WebUserDto webUser;
 
         @Nullable
-        @JsonIgnore
         private Set<VisitDto> visitsDto;
 
 }
