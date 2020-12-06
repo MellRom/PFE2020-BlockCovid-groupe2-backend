@@ -6,10 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
-
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -22,7 +20,7 @@ public class CitizenDto implements Serializable {
     private int citizen_id;
 
     @Nullable
-    private Timestamp sick_since;
+    private String sick_since;
 
     @Nullable
     private Set<VisitDto> visitsDto;
