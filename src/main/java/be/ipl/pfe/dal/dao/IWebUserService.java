@@ -11,7 +11,5 @@ public interface IWebUserService {
     // Establishment
     PlaceDto insertPlace(PlaceDto PlaceDto);
 
-    PlaceDto deletePlace(PlaceDto placeDto);
-
     WebUserDto getPlacesForEstablishment(WebUserDto webUserDto);
 }

@@ -40,9 +40,9 @@ public class WebUserController {
         return ResponseEntity.ok(userService.insertPlace(placeDto));
     }
 
-    @PostMapping("establishment/delete_place")
+    @PostMapping("establishment/modify_place")
     public ResponseEntity deletePlace(@RequestBody PlaceDto placeDto){
-        return ResponseEntity.ok(userService.deletePlace(placeDto));
+        return ResponseEntity.ok(userService.insertPlace(placeDto));
     }
 
     @PostMapping("establishment/list_places")

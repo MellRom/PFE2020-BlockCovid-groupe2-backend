@@ -54,12 +54,6 @@ public class WebUserService implements IWebUserService {
         return placeDto;
     }
 
-    @Override
-    public PlaceDto deletePlace(PlaceDto placeDto) {
-        Place place = modelMapper.map(placeDto, Place.class);
-        placeRepository.deleteById(place.getPlace_id());
-        return placeDto;
-    }
 
     @Override
     public WebUserDto getPlacesForEstablishment(WebUserDto webUserDto) {
