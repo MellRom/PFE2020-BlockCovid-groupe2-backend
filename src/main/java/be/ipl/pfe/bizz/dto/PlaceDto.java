@@ -27,7 +27,6 @@ public class PlaceDto implements Serializable {
         private String description;
 
         @JsonBackReference
-        @Nullable
         private WebUserDto webUser;
 
         @Nullable
