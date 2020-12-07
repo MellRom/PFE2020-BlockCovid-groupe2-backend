@@ -5,6 +5,7 @@ import be.ipl.pfe.bizz.dto.CitizenDto;
 import be.ipl.pfe.bizz.dto.VisitDto;
 import be.ipl.pfe.dal.dao.ICitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,13 @@ public class CitizenController {
     @PostMapping("visit")
     public ResponseEntity visit(@RequestBody VisitDto visitDto) {
         citizenService.visit(visitDto);
-        return ResponseEntity.ok("Visite enregistrée");
+        return ResponseEntity.status(HttpStatus.OK).body("Visite enregistrée");
     }
 
     @PostMapping("positive_covid")
     public ResponseEntity positiveCovid(@RequestBody CitizenDto citizenDto){
         citizenService.positiveCovid(citizenDto);
-        return ResponseEntity.ok("Maladie enregistrée");
+        return ResponseEntity.status(HttpStatus.OK).body("Maladie enregistrée");
     }
 }
 
