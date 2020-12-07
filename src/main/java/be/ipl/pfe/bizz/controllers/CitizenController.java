@@ -24,13 +24,12 @@ public class CitizenController {
     @PostMapping("visit")
     public ResponseEntity visit(@RequestBody VisitDto visitDto) {
         citizenService.visit(visitDto);
-        return ResponseEntity.ok().body("Visite enregistrée");
+        return ResponseEntity.ok(visitDto);
     }
 
     @PostMapping("positive_covid")
     public ResponseEntity positiveCovid(@RequestBody CitizenDto citizenDto){
-        citizenService.positiveCovid(citizenDto);
-        return ResponseEntity.ok().body("Maladie enregistrée");
+        return ResponseEntity.ok(citizenService.positiveCovid(citizenDto));
     }
 }
 
