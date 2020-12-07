@@ -23,5 +23,4 @@ public class CitizenServiceTest {
                 () ->assertTrue(savedCitizen.getCitizen_id() > 0));
         System.out.println("Test fonctionnel");
     }
-
 }
