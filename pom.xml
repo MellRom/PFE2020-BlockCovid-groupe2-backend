@@ -68,6 +68,13 @@
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
         </dependency>
+        <dependency>
+            <groupId>org.mindrot.bcrypt</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.3</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/bcrypt-0.3.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
