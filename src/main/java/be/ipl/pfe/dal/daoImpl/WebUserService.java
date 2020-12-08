@@ -27,10 +27,12 @@ public class WebUserService implements IWebUserService {
     @Override
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
+        System.out.println(webUser.getPassword());
+        System.out.println(webUserDto.getLogin());
+        System.out.println(webUser.getPassword());
+        System.out.println(webUserDto.getLogin());
+
         webUser = webUserRepository.checkConnexion(webUser.getLogin(), webUser.getPassword());
-        /*if(!BCrypt.checkpw(webUserDto.getPassword(), webUser.getPassword())){
-            return null;
-        }*/
         if(webUser == null){
             return null;
         }
@@ -43,10 +45,6 @@ public class WebUserService implements IWebUserService {
         if(webUserRepository.checkLogin(webUser.getLogin()) != null){
             return null;
         }
-        /*if(!hashPassword(webUser)){
-            return null;
-        }*/
-
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
         webUserDto.setUser_id(webUser.getUser_id());
@@ -69,15 +67,4 @@ public class WebUserService implements IWebUserService {
         webUserDto = modelMapper.map(webUser.get(), WebUserDto.class);
         return webUserDto;
     }
-
-    /*private boolean hashPassword(WebUser webUser) {
-        String salt = BCrypt.gensalt();
-        String hashedPassword = BCrypt.hashpw(webUser.getPassword(), salt);
-        if (hashedPassword.equals(webUser.getPassword())){
-            throw new IllegalArgumentException("probleme hashing");
-        }
-        webUser.setPassword(hashedPassword);
-        System.out.println("WebUserDtoPassword: " + webUser.getPassword());
-        return true;
-    }*/
 }

@@ -9,6 +9,7 @@ import be.ipl.pfe.dal.repositories.CitizenRepository;
 import be.ipl.pfe.dal.repositories.VisitRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.temporal.ChronoUnit;
@@ -26,6 +27,8 @@ public class CitizenService implements ICitizenService {
     private VisitRepository visitRepository;
     @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    private SimpMessagingTemplate template;
 
     @Override
     public CitizenDto inscription() {
@@ -52,6 +55,7 @@ public class CitizenService implements ICitizenService {
                 .forEach(v -> visitRepository
                         .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
                             .forEach(c -> citizenSet.add(c)));
+        //template.
         citizenSet.forEach(s -> System.out.println(s.getCitizen_id()));
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);

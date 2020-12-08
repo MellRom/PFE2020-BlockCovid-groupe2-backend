@@ -69,19 +69,16 @@
             <version>1.18.16</version>
         </dependency>
         <dependency>
-            <groupId>org.mindrot.bcrypt</groupId>
-            <artifactId>bcrypt</artifactId>
-            <version>0.3</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/main/resources/bcrypt-0.3.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 
