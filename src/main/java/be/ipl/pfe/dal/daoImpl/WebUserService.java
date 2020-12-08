@@ -7,7 +7,6 @@ import be.ipl.pfe.dal.models.Place;
 import be.ipl.pfe.dal.models.WebUser;
 import be.ipl.pfe.dal.repositories.PlaceRepository;
 import be.ipl.pfe.dal.repositories.WebUserRepository;
-//import org.mindrot.bcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,11 +26,6 @@ public class WebUserService implements IWebUserService {
     @Override
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
-        System.out.println(webUser.getPassword());
-        System.out.println(webUserDto.getLogin());
-        System.out.println(webUser.getPassword());
-        System.out.println(webUserDto.getLogin());
-
         webUser = webUserRepository.checkConnexion(webUser.getLogin(), webUser.getPassword());
         if(webUser == null){
             return null;
