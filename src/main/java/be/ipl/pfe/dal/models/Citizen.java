@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -30,5 +31,18 @@ public class Citizen implements Serializable {
 
     public Citizen(int citizen_id) {
         this.citizen_id = citizen_id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Citizen citizen = (Citizen) o;
+        return citizen_id == citizen.citizen_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(citizen_id);
     }
 }

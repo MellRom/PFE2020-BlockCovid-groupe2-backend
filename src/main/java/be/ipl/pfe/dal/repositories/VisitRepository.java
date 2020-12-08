@@ -13,6 +13,6 @@ import java.util.Set;
 @Repository
 public interface VisitRepository extends CrudRepository<Visit, VisitId> {
     @Query("SELECT DISTINCT new be.ipl.pfe.dal.models.Citizen(v.citizen.citizen_id) FROM Visit v WHERE v.citizen.citizen_id <> ?1 " +
-            "AND v.place.place_id = ?2 AND v.entrance_date > ?3 AND v.entrance_date = ?4")
+            "AND v.place.place_id = ?2 AND v.entrance_date BETWEEN  ?3 AND  ?4")
     Set<Citizen> selectContactCitizen(int citizen_id, int place_id, Timestamp entranceDateLower, Timestamp entranceDateUpper);
 }
