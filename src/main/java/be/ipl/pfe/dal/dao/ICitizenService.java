@@ -12,5 +12,5 @@ public interface ICitizenService {
 
     VisitDto visit(VisitDto visitDto);
 
-    Set<Integer> positiveCovid(CitizenDto citizenDto);
+    Set<String> positiveCovid(CitizenDto citizenDto);
 }

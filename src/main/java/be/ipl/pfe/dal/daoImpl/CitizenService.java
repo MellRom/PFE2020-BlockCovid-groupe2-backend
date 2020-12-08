@@ -52,15 +52,15 @@ public class CitizenService implements ICitizenService {
     }
 
     @Override
-    public Set<Integer> positiveCovid(CitizenDto citizenDto) {
+    public Set<String> positiveCovid(CitizenDto citizenDto) {
         Optional<Citizen> citizen1 = citizenRepository.findById(citizenDto.getCitizen_id());
         Citizen cit = citizen1.get();
-        Set<Integer> citizenSet = new HashSet<>();
+        Set<String> citizenSet = new HashSet<>();
         cit.getVisits()
                 .forEach(v -> {
                     visitRepository
                             .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
-                            .forEach(c -> citizenSet.add(c.getCitizen_id()));
+                            .forEach(c -> citizenSet.add(String.valueOf(c.getCitizen_id())));
                 });
         /*citizenSet.forEach(s -> {
             simpMessagingTemplate.convertAndSendToUser(String.valueOf(s),"/covid/notification",  "Vous avez été récemment en contact avec une personne malade");
