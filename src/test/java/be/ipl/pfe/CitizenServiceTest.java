@@ -18,9 +18,7 @@ public class CitizenServiceTest {
     @Test
     void inscriptionHasNewGeneratedId(){
         CitizenDto savedCitizen = citizenService.inscription();
-        assertAll(
-                () ->assertNotNull(savedCitizen.getCitizen_id()),
-                () ->assertTrue(savedCitizen.getCitizen_id() > 0));
+        assertNotNull(savedCitizen.getCitizen_id());
         System.out.println("Test fonctionnel");
     }
 }

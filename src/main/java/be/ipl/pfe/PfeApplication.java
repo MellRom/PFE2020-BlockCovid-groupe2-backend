@@ -25,7 +25,7 @@ public class PfeApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(PfeApplication.class, args);
-        System.out.println("QuentinLeBg");
+        System.out.println(" -- Application started -- ");
     }
 
 }

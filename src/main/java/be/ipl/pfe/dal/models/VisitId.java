@@ -11,7 +11,7 @@ import java.util.Objects;
 public class VisitId implements Serializable {
 
     private int place;
-    private int citizen;
+    private String citizen;
     private Timestamp entrance_date;
 
     @Override

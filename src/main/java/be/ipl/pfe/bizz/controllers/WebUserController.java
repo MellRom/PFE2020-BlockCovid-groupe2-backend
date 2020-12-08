@@ -16,9 +16,7 @@ public class WebUserController {
 
     @PostMapping("connexion")
     public ResponseEntity connexion(@RequestBody WebUserDto webUserDto) {
-        System.out.println("coucou");
         WebUserDto toSend = userService.checkConnection(webUserDto);
-
         if(toSend== null){
             return ResponseEntity.badRequest().body("Login ou mot de passe incorrect");
         }

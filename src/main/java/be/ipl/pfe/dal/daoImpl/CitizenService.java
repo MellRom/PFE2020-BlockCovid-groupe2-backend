@@ -34,10 +34,11 @@ public class CitizenService implements ICitizenService {
     @Override
     public CitizenDto inscription() {
         Citizen citizen = new Citizen();
-        /*citizen.setCitizen_id(UUID.randomUUID().toString());
+        citizen.setCitizen_id(UUID.randomUUID().toString());
+        System.out.println(citizen.getCitizen_id());
         while(citizenRepository.checkId(citizen.getCitizen_id()) != null){
             citizen.setCitizen_id(UUID.randomUUID().toString());
-        }*/
+        }
         citizen = citizenRepository.save(citizen);
         CitizenDto citizenDto = modelMapper.map(citizen, CitizenDto.class);
         return citizenDto;

@@ -19,9 +19,7 @@ import java.util.Set;
 public class Citizen implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int/*String*/ citizen_id;
-
+    private String citizen_id;
 
     @Column(name = "sick_since")
     private Timestamp sick_since;
@@ -29,7 +27,7 @@ public class Citizen implements Serializable {
     @OneToMany(targetEntity = Visit.class, mappedBy = "citizen", fetch = FetchType.LAZY)
     private Set<Visit> visits;
 
-    public Citizen(int citizen_id) {
+    public Citizen(String citizen_id) {
         this.citizen_id = citizen_id;
     }
 

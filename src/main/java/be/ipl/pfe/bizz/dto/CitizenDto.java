@@ -17,7 +17,7 @@ import java.util.Set;
 public class CitizenDto implements Serializable {
 
     @Id
-    private int/*String*/ citizen_id;
+    private String citizen_id;
 
     @Nullable
     private String sick_since;

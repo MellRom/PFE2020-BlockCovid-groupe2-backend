@@ -9,6 +9,7 @@ import be.ipl.pfe.dal.repositories.PlaceRepository;
 import be.ipl.pfe.dal.repositories.WebUserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -22,14 +23,20 @@ public class WebUserService implements IWebUserService {
     private ModelMapper modelMapper;
     @Autowired
     private PlaceRepository placeRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
-        webUser = webUserRepository.checkConnexion(webUser.getLogin(), webUser.getPassword());
+        webUser = webUserRepository.checkLogin(webUser.getLogin());
         if(webUser == null){
             return null;
         }
+        if (!passwordEncoder.matches(webUserDto.getPassword(), webUser.getPassword())) {
+            return null;
+        }
+        webUser.setPassword("");
         webUserDto = modelMapper.map(webUser, WebUserDto.class);
         return webUserDto;
     }
@@ -39,6 +46,7 @@ public class WebUserService implements IWebUserService {
         if(webUserRepository.checkLogin(webUser.getLogin()) != null){
             return null;
         }
+        webUser.setPassword(passwordEncoder.encode(webUser.getPassword()));
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
         webUserDto.setUser_id(webUser.getUser_id());
