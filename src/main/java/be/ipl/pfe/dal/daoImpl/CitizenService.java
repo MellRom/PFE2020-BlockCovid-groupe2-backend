@@ -52,20 +52,18 @@ public class CitizenService implements ICitizenService {
     }
 
     @Override
-    public Set<Citizen> positiveCovid(CitizenDto citizenDto) {
+    public Set<Integer> positiveCovid(CitizenDto citizenDto) {
         Optional<Citizen> citizen1 = citizenRepository.findById(citizenDto.getCitizen_id());
         Citizen cit = citizen1.get();
-        Set<Citizen> citizenSet = new HashSet<>();
+        Set<Integer> citizenSet = new HashSet<>();
         cit.getVisits()
                 .forEach(v -> {
                     visitRepository
                             .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
-                            .forEach(c -> citizenSet.add(c));
+                            .forEach(c -> citizenSet.add(c.getCitizen_id()));
                 });
         citizenSet.forEach(s -> {
-            System.out.println(String.valueOf(s.getCitizen_id()));
-            simpMessagingTemplate.convertAndSend(/*String.valueOf(s.getCitizen_id()),*/"/covid/notification",  "Vous avez été récemment en contact avec une personne malade");
-            System.out.println("coucou");
+            simpMessagingTemplate.convertAndSendToUser(String.valueOf(s),"/covid/notification",  "Vous avez été récemment en contact avec une personne malade");
         });
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);
