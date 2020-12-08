@@ -7,6 +7,7 @@ import be.ipl.pfe.dal.models.Place;
 import be.ipl.pfe.dal.models.WebUser;
 import be.ipl.pfe.dal.repositories.PlaceRepository;
 import be.ipl.pfe.dal.repositories.WebUserRepository;
+import org.mindrot.bcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,10 @@ public class WebUserService implements IWebUserService {
     @Override
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
-        webUser = webUserRepository.checkConnexion(webUser.getLogin(), webUser.getPassword());
+        webUser = webUserRepository.checkLogin(webUser.getLogin());
+        if(!BCrypt.checkpw(webUserDto.getPassword(), webUser.getPassword())){
+            return null;
+        }
         if(webUser == null){
             return null;
         }
@@ -39,6 +43,10 @@ public class WebUserService implements IWebUserService {
         if(webUserRepository.checkLogin(webUser.getLogin()) != null){
             return null;
         }
+        if(!hashPassword(webUser)){
+            return null;
+        }
+
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
         webUserDto.setUser_id(webUser.getUser_id());
@@ -60,5 +68,16 @@ public class WebUserService implements IWebUserService {
         Optional<WebUser> webUser = webUserRepository.findById(webUserDto.getUser_id());
         webUserDto = modelMapper.map(webUser.get(), WebUserDto.class);
         return webUserDto;
+    }
+
+    private boolean hashPassword(WebUser webUser) {
+        String salt = BCrypt.gensalt();
+        String hashedPassword = BCrypt.hashpw(webUser.getPassword(), salt);
+        if (hashedPassword.equals(webUser.getPassword())){
+            throw new IllegalArgumentException("probleme hashing");
+        }
+        webUser.setPassword(hashedPassword);
+        System.out.println("WebUserDtoPassword: " + webUser.getPassword());
+        return true;
     }
 }
