@@ -36,7 +36,6 @@ public class WebUserController {
 
 
     //Establishment
-
     @PostMapping("establishment/insert_place")
     public ResponseEntity insertPlace(@RequestBody PlaceDto placeDto){
         return ResponseEntity.ok(userService.insertPlace(placeDto));
