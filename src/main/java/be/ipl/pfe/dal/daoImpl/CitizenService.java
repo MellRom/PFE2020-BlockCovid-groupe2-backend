@@ -10,7 +10,11 @@ import be.ipl.pfe.dal.repositories.VisitRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.sql.Timestamp;
+import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -40,10 +44,17 @@ public class CitizenService implements ICitizenService {
     }
 
     @Override
-    public CitizenDto positiveCovid(CitizenDto citizenDto) {
+    public Set<Citizen> positiveCovid(CitizenDto citizenDto) {
+        Optional<Citizen> citizen1 = citizenRepository.findById(citizenDto.getCitizen_id());
+        Citizen cit = citizen1.get();
+        Set<Citizen> citizenSet = new HashSet<>();
+        cit.getVisits()
+                .forEach(v -> visitRepository
+                        .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
+                            .forEach(c -> citizenSet.add(c)));
+        citizenSet.forEach(s -> System.out.println(s.getCitizen_id()));
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
-        citizen = citizenRepository.save(citizen);
-        citizenDto = modelMapper.map(citizen, CitizenDto.class);
-        return citizenDto;
+        citizenRepository.save(citizen);
+        return citizenSet;
     }
 }

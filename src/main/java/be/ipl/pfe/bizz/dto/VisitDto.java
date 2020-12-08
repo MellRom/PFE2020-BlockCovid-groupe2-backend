@@ -2,6 +2,7 @@ package be.ipl.pfe.bizz.dto;
 
 import be.ipl.pfe.dal.models.Citizen;
 import be.ipl.pfe.dal.models.Place;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +16,11 @@ import java.io.Serializable;
 public class VisitDto implements Serializable{
 
         @Id
+        @JsonIgnore
         private Place place;
 
         @Id
+        @JsonIgnore
         private Citizen citizen;
 
         @Id

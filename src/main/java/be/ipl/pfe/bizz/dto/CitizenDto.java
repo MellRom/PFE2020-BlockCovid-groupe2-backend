@@ -23,5 +23,5 @@ public class CitizenDto implements Serializable {
     private String sick_since;
 
     @Nullable
-    private Set<VisitDto> visitsDto;
+    private Set<VisitDto> visits;
 }

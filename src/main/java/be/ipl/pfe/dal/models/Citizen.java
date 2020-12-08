@@ -27,4 +27,8 @@ public class Citizen implements Serializable {
 
     @OneToMany(targetEntity = Visit.class, mappedBy = "citizen", fetch = FetchType.LAZY)
     private Set<Visit> visits;
+
+    public Citizen(int citizen_id) {
+        this.citizen_id = citizen_id;
+    }
 }
