@@ -10,8 +10,8 @@ import java.util.Objects;
 @AllArgsConstructor
 public class VisitId implements Serializable {
 
-    private Place place;
-    private Citizen citizen;
+    private int place;
+    private int citizen;
     private Timestamp entrance_date;
 
     @Override

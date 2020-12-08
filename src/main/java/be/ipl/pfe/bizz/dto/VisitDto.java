@@ -16,11 +16,9 @@ import java.io.Serializable;
 public class VisitDto implements Serializable{
 
         @Id
-        @JsonIgnore
         private Place place;
 
         @Id
-        @JsonIgnore
         private Citizen citizen;
 
         @Id
