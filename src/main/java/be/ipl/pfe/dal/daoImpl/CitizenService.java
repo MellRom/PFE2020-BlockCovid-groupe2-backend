@@ -29,7 +29,7 @@ public class CitizenService implements ICitizenService {
     @Autowired
     private ModelMapper modelMapper;
     @Autowired
-    private SimpMessagingTemplate template;
+    private SimpMessagingTemplate simpMessagingTemplate;
 
     @Override
     public CitizenDto inscription() {
@@ -58,7 +58,7 @@ public class CitizenService implements ICitizenService {
                         .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
                             .forEach(c -> citizenSet.add(c)));
         citizenSet.forEach(s -> System.out.println(s.getCitizen_id()));
-        citizenSet.forEach(s -> template.convertAndSend("/socket/"+String.valueOf(s.getCitizen_id()), "Vous avez été récemment en contact avec une personne malade"));
+        citizenSet.forEach(s -> simpMessagingTemplate.convertAndSend("/socket?token="+String.valueOf(s.getCitizen_id()), "Vous avez été récemment en contact avec une personne malade"));
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);
         return citizenSet;
