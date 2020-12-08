@@ -7,7 +7,7 @@ import be.ipl.pfe.dal.models.Place;
 import be.ipl.pfe.dal.models.WebUser;
 import be.ipl.pfe.dal.repositories.PlaceRepository;
 import be.ipl.pfe.dal.repositories.WebUserRepository;
-import org.mindrot.bcrypt.BCrypt;
+//import org.mindrot.bcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,10 +27,10 @@ public class WebUserService implements IWebUserService {
     @Override
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
-        webUser = webUserRepository.checkLogin(webUser.getLogin());
-        if(!BCrypt.checkpw(webUserDto.getPassword(), webUser.getPassword())){
+        webUser = webUserRepository.checkConnexion(webUser.getLogin(), webUser.getPassword());
+        /*if(!BCrypt.checkpw(webUserDto.getPassword(), webUser.getPassword())){
             return null;
-        }
+        }*/
         if(webUser == null){
             return null;
         }
@@ -43,9 +43,9 @@ public class WebUserService implements IWebUserService {
         if(webUserRepository.checkLogin(webUser.getLogin()) != null){
             return null;
         }
-        if(!hashPassword(webUser)){
+        /*if(!hashPassword(webUser)){
             return null;
-        }
+        }*/
 
         webUser = webUserRepository.save(webUser);
         webUserDto.setPassword("");
@@ -70,7 +70,7 @@ public class WebUserService implements IWebUserService {
         return webUserDto;
     }
 
-    private boolean hashPassword(WebUser webUser) {
+    /*private boolean hashPassword(WebUser webUser) {
         String salt = BCrypt.gensalt();
         String hashedPassword = BCrypt.hashpw(webUser.getPassword(), salt);
         if (hashedPassword.equals(webUser.getPassword())){
@@ -79,5 +79,5 @@ public class WebUserService implements IWebUserService {
         webUser.setPassword(hashedPassword);
         System.out.println("WebUserDtoPassword: " + webUser.getPassword());
         return true;
-    }
+    }*/
 }
