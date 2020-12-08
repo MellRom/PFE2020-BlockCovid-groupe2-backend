@@ -62,7 +62,7 @@ public class CitizenService implements ICitizenService {
                             .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
                             .forEach(c -> citizenSet.add(c));
                 });
-        citizenSet.forEach(s -> simpMessagingTemplate.convertAndSendToUser("/socket/token="+String.valueOf(s.getCitizen_id()),"/covid/notification",  "Vous avez été récemment en contact avec une personne malade"));
+        citizenSet.forEach(s -> simpMessagingTemplate.convertAndSendToUser(String.valueOf(s.getCitizen_id()),"/covid/notification",  "Vous avez été récemment en contact avec une personne malade"));
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);
         return citizenSet;
