@@ -2,6 +2,9 @@ package be.ipl.pfe.dal.dao;
 
 import be.ipl.pfe.bizz.dto.CitizenDto;
 import be.ipl.pfe.bizz.dto.VisitDto;
+import be.ipl.pfe.dal.models.Citizen;
+
+import java.util.Set;
 
 public interface ICitizenService {
 
@@ -9,5 +12,5 @@ public interface ICitizenService {
 
     VisitDto visit(VisitDto visitDto);
 
-    CitizenDto positiveCovid(CitizenDto citizenDto);
+    Set<Citizen> positiveCovid(CitizenDto citizenDto);
 }
