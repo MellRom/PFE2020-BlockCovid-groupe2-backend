@@ -34,7 +34,10 @@ public class CitizenService implements ICitizenService {
     @Override
     public CitizenDto inscription() {
         Citizen citizen = new Citizen();
-        //citizen.setCitizen_id(UUID.randomUUID().toString());
+        /*citizen.setCitizen_id(UUID.randomUUID().toString());
+        while(citizenRepository.checkId(citizen.getCitizen_id()) != null){
+            citizen.setCitizen_id(UUID.randomUUID().toString());
+        }*/
         citizen = citizenRepository.save(citizen);
         CitizenDto citizenDto = modelMapper.map(citizen, CitizenDto.class);
         return citizenDto;
@@ -58,7 +61,7 @@ public class CitizenService implements ICitizenService {
                         .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
                             .forEach(c -> citizenSet.add(c)));
         citizenSet.forEach(s -> System.out.println(s.getCitizen_id()));
-        citizenSet.forEach(s -> simpMessagingTemplate.convertAndSend("/socket?token="+String.valueOf(s.getCitizen_id()), "Vous avez été récemment en contact avec une personne malade"));
+        citizenSet.forEach(s -> simpMessagingTemplate.convertAndSend("/socket/token="+String.valueOf(s.getCitizen_id()), "Vous avez été récemment en contact avec une personne malade"));
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);
         return citizenSet;

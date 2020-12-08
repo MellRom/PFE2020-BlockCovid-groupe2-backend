@@ -19,7 +19,7 @@ public class Citizen implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int citizen_id;
+    private int/*String*/ citizen_id;
 
 
     @Column(name = "sick_since")
