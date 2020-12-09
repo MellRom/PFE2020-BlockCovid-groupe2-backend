@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = {"http://localhost:4200","http://localhost:4201", "https://blockcovid-pfeipl2020-groupe2.herokuapp.com"})
+@CrossOrigin(origins = {"http://localhost:4200","http://localhost:4201","http://localhost:4202", "https://blockcovid-pfeipl2020-groupe2.herokuapp.com"})
 @RestController
 @RequestMapping("/citizen/")
 public class CitizenController {
