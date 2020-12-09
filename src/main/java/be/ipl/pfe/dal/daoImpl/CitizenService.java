@@ -9,6 +9,8 @@ import be.ipl.pfe.dal.repositories.CitizenRepository;
 import be.ipl.pfe.dal.repositories.VisitRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
@@ -18,10 +20,12 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-
+@ConfigurationProperties(prefix = "constant")
 @Service
 public class CitizenService implements ICitizenService {
 
+    //constant in file application.properties
+    @Value("${constant.interval}") private int INTERVAL;
     @Autowired
     private CitizenRepository citizenRepository;
     @Autowired
@@ -56,11 +60,12 @@ public class CitizenService implements ICitizenService {
     public Set<String> positiveCovid(CitizenDto citizenDto) {
         Optional<Citizen> citizen1 = citizenRepository.findById(citizenDto.getCitizen_id());
         Citizen cit = citizen1.get();
+        System.out.println(INTERVAL);
         Set<String> citizenSet = new HashSet<>();
         cit.getVisits()
                 .forEach(v -> {
                     visitRepository
-                            .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(1,ChronoUnit.HOURS)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(1,ChronoUnit.HOURS)))
+                            .selectContactCitizen(v.getCitizen().getCitizen_id(), v.getPlace().getPlace_id(),Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().minus(INTERVAL,ChronoUnit.MINUTES)), Timestamp.valueOf(v.getEntrance_date().toLocalDateTime().plus(INTERVAL,ChronoUnit.MINUTES)))
                             .forEach(c -> citizenSet.add(String.valueOf(c.getCitizen_id())));
                 });
         /*citizenSet.forEach(s -> {
