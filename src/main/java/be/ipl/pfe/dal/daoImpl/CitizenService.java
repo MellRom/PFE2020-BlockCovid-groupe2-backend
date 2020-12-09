@@ -26,6 +26,8 @@ public class CitizenService implements ICitizenService {
 
     //constant in file application.properties
     @Value("${constant.interval}") private int INTERVAL;
+    @Value("${constant.message_covid}") private String MESSAGE_COVID;
+
     @Autowired
     private CitizenRepository citizenRepository;
     @Autowired
@@ -39,7 +41,6 @@ public class CitizenService implements ICitizenService {
     public CitizenDto inscription() {
         Citizen citizen = new Citizen();
         citizen.setCitizen_id(UUID.randomUUID().toString());
-        System.out.println(citizen.getCitizen_id());
         while(citizenRepository.checkId(citizen.getCitizen_id()) != null){
             citizen.setCitizen_id(UUID.randomUUID().toString());
         }
@@ -60,7 +61,7 @@ public class CitizenService implements ICitizenService {
     public Set<String> positiveCovid(CitizenDto citizenDto) {
         Optional<Citizen> citizen1 = citizenRepository.findById(citizenDto.getCitizen_id());
         Citizen cit = citizen1.get();
-        System.out.println(INTERVAL);
+        System.out.println(MESSAGE_COVID);
         Set<String> citizenSet = new HashSet<>();
         cit.getVisits()
                 .forEach(v -> {
@@ -69,7 +70,7 @@ public class CitizenService implements ICitizenService {
                             .forEach(c -> citizenSet.add(String.valueOf(c.getCitizen_id())));
                 });
         citizenSet.forEach(s -> {
-            simpMessagingTemplate.convertAndSendToUser(s,"/covid/notification",  "Vous avez été récemment en contact avec une personne malade");
+            simpMessagingTemplate.convertAndSendToUser(s,"/covid/notification", MESSAGE_COVID );
         });
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);
