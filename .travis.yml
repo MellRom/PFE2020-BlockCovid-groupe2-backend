@@ -1,0 +1,10 @@
+language: java
+jdk:
+  - oraclejdk15
+deploy:
+  provider: heroku
+  api-key:
+    secure: $HEROKU_API_KEY
+  app: blockcovid-pfeipl-groupe2-back
+before_install:
+  - chmod +x mvnw
