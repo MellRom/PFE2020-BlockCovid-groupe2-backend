@@ -12,7 +12,6 @@ public class WebSocketConfiguration extends AbstractWebSocketMessageBrokerConfig
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry stompEndpointRegistry) {
-        //test notification avec 3 mobile app + j'ai rajouté aussi dans le citizenController
         stompEndpointRegistry.addEndpoint("/socket")
                 .setAllowedOrigins("http://localhost:4200","http://localhost:4201","http://localhost:4202")
                 .withSockJS();

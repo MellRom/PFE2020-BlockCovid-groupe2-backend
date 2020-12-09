@@ -71,7 +71,6 @@ public class CitizenService implements ICitizenService {
         citizenSet.forEach(s -> {
             simpMessagingTemplate.convertAndSendToUser(s,"/covid/notification",  "Vous avez été récemment en contact avec une personne malade");
         });
-       // simpMessagingTemplate.convertAndSend("/covid/notification", citizenSet);
         Citizen citizen = modelMapper.map(citizenDto, Citizen.class);
         citizenRepository.save(citizen);
         return citizenSet;
