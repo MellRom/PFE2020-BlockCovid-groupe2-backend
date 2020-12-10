@@ -30,7 +30,7 @@ public class WebUserService implements IWebUserService {
     public WebUserDto checkConnection(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
         webUser = webUserRepository.checkLogin(webUser.getLogin());
-        if(webUser == null){
+        if (webUser == null) {
             return null;
         }
         if (!passwordEncoder.matches(webUserDto.getPassword(), webUser.getPassword())) {
@@ -43,7 +43,7 @@ public class WebUserService implements IWebUserService {
 
     public WebUserDto insertUser(WebUserDto webUserDto) {
         WebUser webUser = modelMapper.map(webUserDto, WebUser.class);
-        if(webUserRepository.checkLogin(webUser.getLogin()) != null){
+        if (webUserRepository.checkLogin(webUser.getLogin()) != null) {
             return null;
         }
         webUser.setPassword(passwordEncoder.encode(webUser.getPassword()));

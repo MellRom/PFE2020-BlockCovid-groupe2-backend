@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
+
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,22 +18,21 @@ import java.util.Set;
 @Setter
 public class PlaceDto implements Serializable {
 
+    @Id
+    private int place_id;
 
-        @Id
-        private int place_id;
+    @Nullable
+    private String name;
 
-        @Nullable
-        private String name;
+    @Nullable
+    private String description;
 
-        @Nullable
-        private String description;
+    @JsonBackReference
+    private WebUserDto webUser;
 
-        @JsonBackReference
-        private WebUserDto webUser;
-
-        @Nullable
-        @JsonIgnore
-        private Set<VisitDto> visits;
+    @Nullable
+    @JsonIgnore
+    private Set<VisitDto> visits;
 
 }
 

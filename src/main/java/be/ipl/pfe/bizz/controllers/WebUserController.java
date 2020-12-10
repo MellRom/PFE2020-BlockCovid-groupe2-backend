@@ -17,35 +17,35 @@ public class WebUserController {
     @PostMapping("connexion")
     public ResponseEntity connexion(@RequestBody WebUserDto webUserDto) {
         WebUserDto toSend = userService.checkConnection(webUserDto);
-        if(toSend== null){
+        if (toSend == null) {
             return ResponseEntity.badRequest().body("Login ou mot de passe incorrect");
         }
         return ResponseEntity.ok(toSend);
     }
 
     @PostMapping("inscription")
-    public ResponseEntity inscription(@RequestBody WebUserDto webUserDto){
+    public ResponseEntity inscription(@RequestBody WebUserDto webUserDto) {
         WebUserDto toSend = userService.insertUser(webUserDto);
-        if(toSend == null){
+        if (toSend == null) {
             return ResponseEntity.badRequest().body("Login déjà existant");
         }
-         return ResponseEntity.ok(toSend);
+        return ResponseEntity.ok(toSend);
     }
 
 
     //Establishment
     @PostMapping("establishment/insert_place")
-    public ResponseEntity insertPlace(@RequestBody PlaceDto placeDto){
+    public ResponseEntity insertPlace(@RequestBody PlaceDto placeDto) {
         return ResponseEntity.ok(userService.insertPlace(placeDto));
     }
 
     @PostMapping("establishment/modify_place")
-    public ResponseEntity deletePlace(@RequestBody PlaceDto placeDto){
+    public ResponseEntity deletePlace(@RequestBody PlaceDto placeDto) {
         return ResponseEntity.ok(userService.insertPlace(placeDto));
     }
 
     @PostMapping("establishment/list_places")
-    public ResponseEntity getPlacesForEstablishment(@RequestBody WebUserDto webUserDto){
+    public ResponseEntity getPlacesForEstablishment(@RequestBody WebUserDto webUserDto) {
         return ResponseEntity.ok(userService.getPlacesForEstablishment(webUserDto).getPlaces());
     }
 }

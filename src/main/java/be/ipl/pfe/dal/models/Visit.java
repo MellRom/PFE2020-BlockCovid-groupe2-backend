@@ -17,22 +17,22 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @IdClass(VisitId.class)
-@Table(name = "visit",schema = "projetpfe")
-public class Visit implements Serializable{
+@Table(name = "visit", schema = "projetpfe")
+public class Visit implements Serializable {
 
-        @Id
-        @JoinColumn(name = "citizen_id")
-        @ManyToOne(fetch = FetchType.LAZY)
-        @Fetch(FetchMode.JOIN)
-        private Citizen citizen;
+    @Id
+    @JoinColumn(name = "citizen_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    private Citizen citizen;
 
-        @Id
-        @JoinColumn(name = "place_id")
-        @ManyToOne(fetch = FetchType.LAZY)
-        private Place place;
+    @Id
+    @JoinColumn(name = "place_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Place place;
 
-        @Id
-        @Column(name = "entrance_date")
-        private Timestamp entrance_date;
+    @Id
+    @Column(name = "entrance_date")
+    private Timestamp entrance_date;
 
 }

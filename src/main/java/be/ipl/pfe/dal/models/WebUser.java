@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "web_user",schema = "projetpfe")
+@Table(name = "web_user", schema = "projetpfe")
 public class WebUser implements Serializable {
 
     @Id
@@ -33,14 +34,14 @@ public class WebUser implements Serializable {
     @Column(name = "role")
     private Role role;
 
-    @OneToMany(targetEntity = Place.class,mappedBy = "webUser", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Place.class, mappedBy = "webUser", fetch = FetchType.LAZY)
     @OrderBy("place_id")
     private List<Place> places;
 
     @Column(name = "address")
     private String address;
 
-    public WebUser(int user_id, String login,String password, Role role){
+    public WebUser(int user_id, String login, String password, Role role) {
         this.user_id = user_id;
         this.login = login;
         this.password = password;
